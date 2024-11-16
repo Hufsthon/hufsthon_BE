@@ -1,7 +1,5 @@
 package com.hufsthon.demo.global.exception.common.handler;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -10,8 +8,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,12 +17,12 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.google.firebase.database.annotations.Nullable;
 import com.hufsthon.demo.global.common.CommonResponse;
 import com.hufsthon.demo.global.exception.common.ErrorReason;
 import com.hufsthon.demo.global.exception.common.GeneralException;
 import com.hufsthon.demo.global.exception.common.code.GlobalErrorCode;
 
+import io.micrometer.common.lang.Nullable;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.constraints.NotNull;
