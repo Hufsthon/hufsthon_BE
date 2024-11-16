@@ -48,14 +48,11 @@ public enum GlobalErrorCode implements BaseErrorCode {
 	// 404 Not Found - 찾을 수 없음
 	REFRESH_TOKEN_NOT_FOUND(NOT_FOUND, "AUTH404_1", "리프레시 토큰이 존재하지 않습니다."),
 
-	//Member
+	//Doctor
 	// 404 Not Found - 찾을 수 없음
 	MEMBER_NOT_FOUND(NOT_FOUND, "MEMBER404_1", "회원을 찾을 수 없습니다."),
 	MEMBER_ALREADY_EXIST(CONFLICT, "MEMBER409_1", "이미 존재하는 회원입니다."),
-	MEMBER_NOT_EXIST(CONFLICT, "MEMBER409_2", "존재하지 않는 회원입니다.")
-	;
-
-
+	MEMBER_NOT_EXIST(CONFLICT, "MEMBER409_2", "존재하지 않는 회원입니다.");
 
 	private final HttpStatus httpStatus;
 	private final String code;

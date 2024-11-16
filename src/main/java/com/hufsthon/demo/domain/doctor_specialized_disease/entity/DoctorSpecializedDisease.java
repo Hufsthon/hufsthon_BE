@@ -1,11 +1,11 @@
-package com.hufsthon.demo.auth.refreshtoken.entity;
+package com.hufsthon.demo.domain.doctor_specialized_disease.entity;
 
-import java.time.LocalDateTime;
-
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import com.hufsthon.demo.auth.member.entity.Member;
+import com.hufsthon.demo.domain.disease.entity.Disease;
+import com.hufsthon.demo.domain.doctor.entity.Doctor;
 import com.hufsthon.demo.global.common.BaseEntity;
 
 import jakarta.persistence.Column;
@@ -15,7 +15,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,35 +28,28 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@DynamicInsert
 @DynamicUpdate
-public class RefreshToken extends BaseEntity {
+@DynamicInsert
+public class DoctorSpecializedDisease extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "refresh_token_id")
+	@Column(name = "doctor_specialized_disease_id")
 	private Long id;
 
-	private String refreshToken;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "disease_id")
+	private Disease disease;
 
-	private long expiration;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "doctor_id")
+	private Doctor doctor;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
-	private Member member;
+	@Builder.Default
+	@ColumnDefault("0")
+	private Integer experienceYear = 0;
 
-	public boolean isExpired() {
-		return LocalDateTime.now().isAfter(this.getCreatedAt().plusSeconds(expiration));
-	}
-
-	public static RefreshToken createRefreshToken(String refreshToken, Member member) {
-
-		return RefreshToken.builder()
-			.refreshToken(refreshToken)
-			.member(member)
-			.build();
-
-	}
-
+	@Lob
+	private String specialNote;
 
 }
