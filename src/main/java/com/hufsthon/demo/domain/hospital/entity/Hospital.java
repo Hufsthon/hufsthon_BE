@@ -3,6 +3,7 @@ package com.hufsthon.demo.domain.hospital.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -10,13 +11,6 @@ import com.hufsthon.demo.domain.doctor.entity.Doctor;
 import com.hufsthon.demo.domain.hospital_department.entity.HospitalDepartment;
 import com.hufsthon.demo.global.common.BaseEntity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,6 +37,9 @@ public class Hospital extends BaseEntity {
 	private Address address;
 
 	private String phoneNumber;
+
+	@Enumerated(EnumType.STRING)
+	private HospitalType hospitalType;
 
 	@Embedded
 	private Time time;
