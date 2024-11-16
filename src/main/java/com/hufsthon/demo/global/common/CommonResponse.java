@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,6 +36,7 @@ public class CommonResponse<T> {
 	@JsonProperty("data")
 	private T data;
 
+	// 제네릭 메서드로 수정
 	public static <T> CommonResponse<T> onSuccess(T data) {
 		return new CommonResponse<>(true, "200", "요청에 성공하였습니다.", LocalDateTime.now(), data);
 	}
