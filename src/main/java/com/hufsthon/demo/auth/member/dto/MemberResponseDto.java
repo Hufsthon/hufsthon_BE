@@ -1,8 +1,10 @@
 package com.hufsthon.demo.auth.member.dto;
 
 
+import java.time.LocalTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.hufsthon.demo.auth.member.entity.Member;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,6 +19,22 @@ public class MemberResponseDto {
 
 
 
+	@Getter
+	@Builder
+	@NoArgsConstructor(access = AccessLevel.PROTECTED)
+	@AllArgsConstructor
+	@Schema(description = "회원 상세 정보")
+	public static class MemberInfo {
+		@Schema(description = "회원 ID", example = "1")
+		private Long id;
+
+		public static MemberInfo of(Member member) {
+			return MemberInfo.builder()
+				.id(member.getId())
+				.build();
+
+		}
+	}
 	@Getter
 	@Builder
 	@NoArgsConstructor(access = AccessLevel.PROTECTED) // access level 수정

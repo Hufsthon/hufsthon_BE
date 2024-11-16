@@ -4,9 +4,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import com.ghpg.morningbuddies.auth.member.dto.CustomUserDetails;
-import com.ghpg.morningbuddies.global.exception.common.GeneralException;
-import com.ghpg.morningbuddies.global.exception.common.code.GlobalErrorCode;
+import com.hufsthon.demo.auth.member.dto.CustomUserDetails;
+import com.hufsthon.demo.global.exception.common.GeneralException;
+import com.hufsthon.demo.global.exception.common.code.GlobalErrorCode;
 
 import jakarta.servlet.http.Cookie;
 import lombok.NoArgsConstructor;

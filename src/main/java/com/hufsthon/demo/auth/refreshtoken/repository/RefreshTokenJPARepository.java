@@ -5,19 +5,10 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.hufsthon.demo.auth.refreshtoken.entity.RefreshToken;
 
 public interface RefreshTokenJPARepository extends JpaRepository<RefreshToken, Long> {
-	Optional<RefreshToken> findByEmail(String email);
-
-	@Query("select rt from RefreshToken rt " +
-		"join fetch rt.member m " +
-		"left join fetch m.groups g " +
-		"where rt.refreshToken = :refresh")
-	Optional<RefreshToken> findByRefreshWithMemberAndGroup(@Param("refresh") String refresh);
 
 	@Modifying  // UPDATE/DELETE 쿼리임을 명시
 	@Query("DELETE FROM RefreshToken r WHERE r.member.id = :memberId")
@@ -26,9 +17,6 @@ public interface RefreshTokenJPARepository extends JpaRepository<RefreshToken, L
 	void deleteByRefreshToken(String refresh);
 
 	Boolean existsByRefreshToken(String refresh);
-
-	@Transactional
-	void deleteByEmail(String email);
 
 	Optional<RefreshToken> findByRefreshToken(String refreshToken);
 

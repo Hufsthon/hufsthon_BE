@@ -23,6 +23,7 @@ import com.hufsthon.demo.auth.member.dto.MemberResponseDto;
 import com.hufsthon.demo.auth.member.entity.Member;
 import com.hufsthon.demo.auth.refreshtoken.service.RefreshTokenCommandService;
 import com.hufsthon.demo.global.common.CommonResponse;
+import com.hufsthon.demo.global.exception.common.code.BaseErrorCode;
 import com.hufsthon.demo.global.exception.common.code.GlobalErrorCode;
 import com.hufsthon.demo.global.exception.member.MemberException;
 
@@ -132,12 +133,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 	private MemberResponseDto.MemberInfo createMemberInfo(Member member) {
 		return MemberResponseDto.MemberInfo.builder()
 			.id(member.getId())
-			.profileImage(member.getProfileImageUrl())
-			.firstName(member.getFirstName())
-			.lastName(member.getLastName())
-			.preferredWakeupTime(member.getPreferredWakeupTime())
-			.groups(GroupMapper.toGroupListResponseDTO(member.getGroups()))
-			.successGameCount(GroupMapper.getCountSuccessGame(member))
+
 			.build();
 	}
 

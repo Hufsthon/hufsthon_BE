@@ -29,7 +29,7 @@ public class RefreshTokenCommandServiceImpl implements RefreshTokenCommandServic
 
 		refreshTokenJPARepository.deleteByMemberId(member.getId());
 
-		refreshTokenJPARepository.save(RefreshToken.createRefreshToken(refreshToken, email, member));
+		refreshTokenJPARepository.save(RefreshToken.createRefreshToken(refreshToken, member));
 
 		log.info("Refresh Token saved for email: {}", email);
 
