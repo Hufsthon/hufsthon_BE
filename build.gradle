@@ -21,6 +21,7 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }  // 이 줄을 추가
 }
 
 dependencies {
@@ -67,6 +68,9 @@ dependencies {
 
     // P6Spy
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'
+
+    // KOMORAN
+    implementation 'com.github.shin285:KOMORAN:3.3.4'
 
 
 }
