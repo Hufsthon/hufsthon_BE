@@ -124,7 +124,7 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(value = GeneralException.class)
 	public ResponseEntity onThrowException(
 		GeneralException generalException,
-		@AuthenticationPrincipal User user,
+		// @AuthenticationPrincipal User user,
 		HttpServletRequest request) {
 		ErrorReason errorReasonHttpStatus = generalException.getErrorReasonHttpStatus();
 		return handleExceptionInternal(generalException, errorReasonHttpStatus, null, request);
@@ -171,18 +171,18 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
 		return super.handleExceptionInternal(e, body, headers, errorCode.getHttpStatus(), request);
 	}
 
-	private void getExceptionStackTrace(
-		Exception e, @AuthenticationPrincipal User user, HttpServletRequest request) {
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
-
-		pw.append("\n==========================!!!ERROR TRACE!!!==========================\n");
-		pw.append("uri: " + request.getRequestURI() + " " + request.getMethod() + "\n");
-		if (user != null) {
-			pw.append("uid: " + user.getUsername() + "\n");
-		}
-		pw.append(e.getMessage());
-		pw.append("\n=====================================================================");
-		log.error(sw.toString());
-	}
+	// private void getExceptionStackTrace(
+	// 	Exception e, @AuthenticationPrincipal User user, HttpServletRequest request) {
+	// 	StringWriter sw = new StringWriter();
+	// 	PrintWriter pw = new PrintWriter(sw);
+	//
+	// 	pw.append("\n==========================!!!ERROR TRACE!!!==========================\n");
+	// 	pw.append("uri: " + request.getRequestURI() + " " + request.getMethod() + "\n");
+	// 	if (user != null) {
+	// 		pw.append("uid: " + user.getUsername() + "\n");
+	// 	}
+	// 	pw.append(e.getMessage());
+	// 	pw.append("\n=====================================================================");
+	// 	log.error(sw.toString());
+	// }
 }

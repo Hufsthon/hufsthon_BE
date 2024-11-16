@@ -52,35 +52,10 @@ public enum GlobalErrorCode implements BaseErrorCode {
 	// 404 Not Found - 찾을 수 없음
 	MEMBER_NOT_FOUND(NOT_FOUND, "MEMBER404_1", "회원을 찾을 수 없습니다."),
 	MEMBER_ALREADY_EXIST(CONFLICT, "MEMBER409_1", "이미 존재하는 회원입니다."),
-	MEMBER_NOT_EXIST(CONFLICT, "MEMBER409_2", "존재하지 않는 회원입니다."),
+	MEMBER_NOT_EXIST(CONFLICT, "MEMBER409_2", "존재하지 않는 회원입니다.")
+	;
 
-	//Group
-	GROUP_ALREADY_CREATED(CONFLICT, "GROUP409_1", "그룹이 이미 존재합니다."),
-	GROUP_NOT_FOUND(CONFLICT, "GROUP409_2", "그룹을 찾을 수 없습니다."),
-	GROUP_PERMISSION_DENIED(CONFLICT, "GROUP409_3", "그룹에 대한 권한이 없습니다."),
-	GROUP_FULL(CONFLICT, "GROUP409_4", "인원이 다 찼습니다."),
-	LEADER_CANNOT_LEAVE_GROUP(CONFLICT, "GROUP409_5", "반장은 그룹에서 나갈 수 없습니다."),
 
-	// ChatRoom
-	CHATROOM_NOT_FOUND(NOT_FOUND, "CHATROOM404_1", "채팅방을 찾을 수 없습니다."),
-	MEMBER_NOT_IN_CHATROOM(CONFLICT, "CHATROOM409_1", "해당 회원은 채팅방에 없습니다."),
-
-	//MemberGroup
-	MEMBER_NOT_IN_GROUP(CONFLICT, "MEMBERGROUP409_1", "해당 회원은 그룹에 없습니다."),
-
-	//Request
-	REQUEST_NOT_FOUND(CONFLICT, "REQUEST409_1", "요청을 찾을 수 없습니다."),
-
-	//File
-	FILE_UPLOAD_FAILED(CONFLICT, "FILE409_1", "파일 업로드에 실패하였습니다."),
-	FILE_DOWNLOAD_FAILED(CONFLICT, "FILE409_2", "파일 다운로드에 실패하였습니다."),
-
-	//Puzzle
-	PUZZLE_NOT_FOUND(NOT_FOUND, "PUZZLE404_1", "퍼즐을 찾을 수 없습니다."),
-	PUZZLE_PIECE_SAVE_FAILED(CONFLICT, "PUZZLE409_1", "퍼즐 조각 저장에 실패하였습니다."),
-
-	//Game
-	GAME_NOT_FOUND(NOT_FOUND, "GAME404_1", "게임을 찾을 수 없습니다.");
 
 	private final HttpStatus httpStatus;
 	private final String code;
