@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.hufsthon.demo.global.exception.common.code.BaseCode;
+import com.hufsthon.demo.global.exception.common.code.SuccessStatus;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -38,7 +40,14 @@ public class CommonResponse<T> {
 	private T data;
 
 	public static <T> CommonResponse<T> onSuccess(T data) {
-		return new CommonResponse<>(true, "200", "요청에 성공하였습니다.", LocalDateTime.now(), data);
+		return new CommonResponse<>(true, SuccessStatus._OK.getCode(), SuccessStatus._OK.getMessage(),
+			LocalDateTime.now(), data);
+	}
+
+	public static <T> CommonResponse<T> of(BaseCode baseCode, T data) {
+		return new CommonResponse<>(true, baseCode.getReasonHttpStatus().getCode(),
+			baseCode.getReasonHttpStatus().getMessage(),
+			LocalDateTime.now(), data);
 	}
 
 	public static <T> CommonResponse<T> onFailure(String code, String message, T data) {

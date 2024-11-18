@@ -1,21 +1,16 @@
 package com.hufsthon.demo.global.exception.common;
 
-
 import com.hufsthon.demo.global.exception.common.code.BaseErrorCode;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 public class GeneralException extends RuntimeException {
 
 	private final BaseErrorCode errorCode;
-	private final Object data;
 
 	public GeneralException(BaseErrorCode errorCode) {
 		this.errorCode = errorCode;
-		this.data = null;
 	}
 
 	public ErrorReason getErrorReason() {
@@ -23,8 +18,6 @@ public class GeneralException extends RuntimeException {
 	}
 
 	public ErrorReason getErrorReasonHttpStatus() {
-		return this.data != null ?
-			this.errorCode.getReasonHttpStatus(this.data) :
-			this.errorCode.getReasonHttpStatus();
+		return this.errorCode.getReasonHttpStatus();
 	}
 }

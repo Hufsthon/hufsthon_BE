@@ -8,5 +8,4 @@ public interface BaseErrorCode {
 
 	public ErrorReason getReasonHttpStatus();
 
-	ErrorReason getReasonHttpStatus(Object data);
 }
